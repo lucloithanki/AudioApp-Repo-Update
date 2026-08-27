@@ -1,34 +1,53 @@
-HaiTuan-AudioTTS-Pro 2.0.3
-✨ Tính năng mới
+# HaiTuan-AudioTTS-Pro — kênh cập nhật 2.0.4
 
-Cảm xúc & tốc độ theo từng đoạn
-Bôi đen một câu → chuột phải → chọn cảm xúc (Vui, Buồn, Giận, Nhẹ nhàng…) và tốc độ riêng cho đoạn đó. Văn bản giữ nguyên một khối, app tự cắt khi tạo audio.
+### Yêu cầu
 
-Chia theo câu
-Một nút cắt bản thảo thành từng câu — hợp để gán cảm xúc và làm phụ đề.
+|---|---|
+| Hệ điều hành | Windows 10 trở lên, 64-bit |
+| Dung lượng cài | khoảng 500 MB |
+| WebView2 | **đã kèm sẵn** trong bộ cài — không cần tải riêng |
+| Kết nối mạng | cần, để gọi API tạo giọng nói |
 
-Kết nối AI Agent (MCP)
-Bật trong Cài đặt để trợ lý AI như Claude tự tạo audio, nhận dạng lời và xuất phụ đề qua app. Mặc định tắt.
+### Cách cài
 
-Chữ sáng theo giọng đọc — giờ mới thật sự chuẩn
-Trước đây chữ sáng theo ước lượng. Bản này lấy được mốc thời gian từng từ thật từ MiniMax (lỗi cũ khiến dữ liệu này bị chặn suốt nhiều tháng).
+1. Tải tệp `...-setup.exe`
+2. Windows SmartScreen có thể cảnh báo vì bộ cài chưa mua chứng thư ký số:
+   bấm **More info** → **Run anyway**
+3. Làm theo trình cài đặt
+4. Mở ứng dụng, nhập mã bản quyền, rồi vào **Cài đặt** dán API key của
+   MiniMax và ElevenLabs
 
-Xuất kèm file mốc thời gian .words.json
-Mỗi lần xuất audio kèm một file dữ liệu để app dựng chữ động đọc được.
+Cài đè lên bản cũ được, không mất bản thảo hay audio đã tạo.
 
-Phụ đề SRT dùng được thật
-Tách theo câu thay vì gộp cả đoạn 10 phút vào một dòng.
+---
 
-Quản lý hạn mức MiniMax
-Cảnh báo trước khi chạy lô lớn, dừng đúng lúc khi hết hạn mức (thay vì báo "xong" sai sự thật), và theo dõi credit.
+## Tự cập nhật
 
-Đường dẫn xuất riêng cho từng bản thảo — có icon 📄✓ đánh dấu.
+Ứng dụng tự kiểm tra kho này. Khi có bản mới:
 
-Ghép audio cả nhóm chỉ một cú bấm.
+**Cài đặt → Cập nhật phần mềm → Kiểm tra** → đồng ý → ứng dụng tải, cài và
+khởi động lại. Dữ liệu giữ nguyên.
 
-🔧 Sửa lỗi
-Sửa treo khi phát bản thảo rất dài
-Sửa tạo lại audio xong bấm phát không chạy
-Sửa "Xuất file" mở nhầm thư mục Documents
-Bỏ thẻ âm thanh <laughs> — đã kiểm chứng MiniMax đọc nó thành chữ chứ không tạo tiếng cười
-Bố cục Cài đặt gọn gàng hơn
+## Gặp sự cố
+
+| Hiện tượng | Nguyên nhân thường gặp |
+|---|---|
+| *"Không kiểm tra được cập nhật: 404"* | Bản phát hành mới nhất thiếu tệp `latest.json`, hoặc bị đánh dấu **Pre-release** nên không được coi là *Latest* |
+| *"Không kết nối được máy chủ cập nhật"* | Mất mạng, hoặc tường lửa chặn `github.com` |
+| Tải xong nhưng không cài được | Chữ ký không khớp — tải lại bộ cài từ trang Releases |
+
+Tự kiểm nhanh: mở
+<https://github.com/lucloithanki/AudioApp-Repo-Update/releases/latest/download/latest.json>
+— phải thấy JSON có `"version"`. Nếu ra 404 thì bản phát hành đang sai.
+
+Hỗ trợ: **0868192331**
+
+---
+
+## Phiên bản
+
+| Bản | Nội dung chính |
+|---|---|
+| **2.0.4** | Tự thêm đuôi `.mp3` khi lưu · khoảng lặng cuối khi ghép audio · ghép được audio từ thư mục bất kỳ |
+| **2.0.3** | Cảm xúc và tốc độ theo từng đoạn · chia theo câu · kết nối AI Agent (MCP) · mốc thời gian từng từ và tệp `.words.json` · phụ đề SRT theo câu · quản lý hạn mức MiniMax |
+| **2.0.1** | Nhúng WebView2 vào bộ cài · tự cập nhật · quản lý giọng · bảy giao diện màu |
