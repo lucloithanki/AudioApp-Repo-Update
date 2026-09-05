@@ -1,53 +1,39 @@
-# HaiTuan-AudioTTS-Pro — kênh cập nhật 2.0.4
 
-### Yêu cầu
+## 2.0.6 — 2026-09-06
 
-|---|---|
-| Hệ điều hành | Windows 10 trở lên, 64-bit |
-| Dung lượng cài | khoảng 500 MB |
-| WebView2 | **đã kèm sẵn** trong bộ cài — không cần tải riêng |
-| Kết nối mạng | cần, để gọi API tạo giọng nói |
+### Lỗi đã sửa
 
-### Cách cài
+- **File MP3 xuất ra bị Premiere đọc sai thời lượng** — bản thu 20 phút có thể
+  hiện ra chỉ vài giây. Ảnh hưởng mọi bản ghép từ nhiều đoạn.
+- **Karaoke sáng nhầm từ** — chỉ trúng khoảng 9% số lần, trung bình lệch 4 từ.
+- **Đổi giọng rồi "Tạo audio cả nhóm" thì không có gì xảy ra** — app tưởng bản
+  thảo đó đã xong.
+- **Xoá bản thảo không hỏi lại** — bấm nhầm là mất kịch bản.
+- **Đổi tên giọng làm mất tên gốc.**
+- **Hai dòng hạn mức đọc ngược nhau** — ElevenLabs đếm phần đã dùng, MiniMax
+  đếm phần còn lại, nhưng không dòng nào ghi chiều.
+- **Bảng "Saved info" của trình duyệt nhảy ra** trên các ô nhập, kể cả ô API key.
 
-1. Tải tệp `...-setup.exe`
-2. Windows SmartScreen có thể cảnh báo vì bộ cài chưa mua chứng thư ký số:
-   bấm **More info** → **Run anyway**
-3. Làm theo trình cài đặt
-4. Mở ứng dụng, nhập mã bản quyền, rồi vào **Cài đặt** dán API key của
-   MiniMax và ElevenLabs
+### Cải tiến
 
-Cài đè lên bản cũ được, không mất bản thảo hay audio đã tạo.
+- **Tiến độ khi tạo cả nhóm** — tiêu đề nhóm hiện `3/8`, mỗi bản thảo hiện
+  `5/12 đoạn · 4 phút`.
+- **Cảnh báo hạn mức trước khi chạy nhóm** — báo tổng ký tự sẽ gửi, hạn mức còn
+  lại, phần vượt, và tiêu bao nhiêu credit nếu đã bật dùng credit.
+- **Tự giải mã ký tự HTML khi dán** (`another&#39;s` → `another's`). Bản thảo cũ:
+  chuột phải → *Giải mã ký tự HTML*.
+- **Hộp thoại xoá bản thảo** — liệt kê tên, có ô chọn xoá luôn file audio kèm
+  dung lượng. Bản đã xuất ra ngoài không bị đụng tới.
+- **Bấm "Tạo audio" khi chưa đổi gì** — báo audio đã có sẵn thay vì gửi lại; có
+  đổi thì liệt kê bảng *cũ → mới* trước khi gửi.
+- **Thư viện audio** — thêm cột "Audio khác", hiện MD5, chuột phải để đổi MD5.
+- **Chia đoạn mặc định 500 ký tự** (trước là 200).
+- **Nhóm mới tự tạo sẵn 2 bản thảo trống.**
+- Chuột phải vào vùng trống danh sách bản thảo mở menu của app.
+- Bỏ "Nhập file txt".
 
----
+### Cần làm sau khi cập nhật
 
-## Tự cập nhật
-
-Ứng dụng tự kiểm tra kho này. Khi có bản mới:
-
-**Cài đặt → Cập nhật phần mềm → Kiểm tra** → đồng ý → ứng dụng tải, cài và
-khởi động lại. Dữ liệu giữ nguyên.
-
-## Gặp sự cố
-
-| Hiện tượng | Nguyên nhân thường gặp |
-|---|---|
-| *"Không kiểm tra được cập nhật: 404"* | Bản phát hành mới nhất thiếu tệp `latest.json`, hoặc bị đánh dấu **Pre-release** nên không được coi là *Latest* |
-| *"Không kết nối được máy chủ cập nhật"* | Mất mạng, hoặc tường lửa chặn `github.com` |
-| Tải xong nhưng không cài được | Chữ ký không khớp — tải lại bộ cài từ trang Releases |
-
-Tự kiểm nhanh: mở
-<https://github.com/lucloithanki/AudioApp-Repo-Update/releases/latest/download/latest.json>
-— phải thấy JSON có `"version"`. Nếu ra 404 thì bản phát hành đang sai.
-
-Hỗ trợ: **0868192331**
-
----
-
-## Phiên bản
-
-| Bản | Nội dung chính |
-|---|---|
-| **2.0.4** | Tự thêm đuôi `.mp3` khi lưu · khoảng lặng cuối khi ghép audio · ghép được audio từ thư mục bất kỳ |
-| **2.0.3** | Cảm xúc và tốc độ theo từng đoạn · chia theo câu · kết nối AI Agent (MCP) · mốc thời gian từng từ và tệp `.words.json` · phụ đề SRT theo câu · quản lý hạn mức MiniMax |
-| **2.0.1** | Nhúng WebView2 vào bộ cài · tự cập nhật · quản lý giọng · bảy giao diện màu |
+File MP3 đã xuất **trước** bản này vẫn hỏng — xuất lại cũng ra file cũ, phải
+**tạo lại** rồi mới xuất. Nếu chưa đổi gì kể từ lần tạo trước (giọng, model,
+"Split mỗi", văn bản) thì app chỉ ghép lại từ bộ nhớ đệm, **không tốn hạn mức**.
